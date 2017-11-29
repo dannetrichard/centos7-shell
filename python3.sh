@@ -6,7 +6,7 @@ yum install openssl-devel bzip2-devel expat-devel gdbm-devel readline-devel sqli
 #到python官网下载https://www.python.org
 #下载最新版源码，使用make altinstall，如果使用make install，在系统中将会有两个不同版本的Python在/usr/bin/目录中。这将会导致很多问题，而且不好处理。
 #wget https://www.python.org/ftp/python/3.5.4/Python-3.5.4.tgz -P /usr/local/src
-cd /usr/local/src
+cd centos7-shell/usr_local_src/
 tar -xzvf Python-3.5.4.tgz
 cd  Python-3.5.4
 #把Python3.6安装到 /usr/local 目录
