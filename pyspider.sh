@@ -2,7 +2,7 @@
 
 #将PhantomJS下载在/usr/local/src/目录下
 #https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2
-cd centos7-shell/usr_local_src/
+cd /root/centos7-shell/usr_local_src/
 yum install bzip2 -y
 
 # 下载好后进行解压（由于是bz2格式，要先进行bzip2解压成tar格式，再使用tar解压）
