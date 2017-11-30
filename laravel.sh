@@ -33,15 +33,21 @@ function laravel_cfg(){
     sed -i 's/UTC/Asia\/Shanghai/g' config/app.php
 }
 function nginx_cfg(){
-    cat >/etc/nginx/sites-available/$1.jingyi-good.com <<EOF
+    cat >/etc/nginx/conf.d/$1.jingyi-good.com <<EOF
 server {
-    listen 80;
-    server_name $1.jingyi-good.com;
-    root /data/www/$1.jingyi-good.com/$2/public;
-    index index.php;
+    listen   80;
+    server_name  $1.jingyi-good.com;
+    root   /data/www/$1.jingyi-good.com/$2/public;
+    index.php;
 
     location / {
         try_files \$uri \$uri/ /index.php?\$query_string;
+    }
+
+    error_page 404 /404.html;
+    error_page 500 502 503 504 /50x.html;
+    location = /50x.html {
+        root /usr/share/nginx/html;
     }
 
     location ~ \.php$ {
@@ -50,15 +56,9 @@ server {
         fastcgi_index index.php;
         fastcgi_param SCRIPT_FILENAME \$document_root\$fastcgi_script_name;
         include fastcgi_params;
-    }
-
-    location ~ /\.ht {
-        deny all;
-    }
+    }    
 }
 EOF
-    sudo ln -s /etc/nginx/sites-available/$1.jingyi-good.com /etc/nginx/sites-enabled/$1.jingyi-good.com
-    sudo nginx -t
     sudo systemctl restart nginx.service          
 }
 
