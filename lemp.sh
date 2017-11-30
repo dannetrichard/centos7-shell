@@ -58,5 +58,5 @@ systemctl start php-fpm.service
 systemctl enable php-fpm.service
 
 yum -y install yum-utils
-$ yum-config-manager --enable rhui-REGION-rhel-server-extras rhui-REGION-rhel-server-optional
-sudo yum install certbot-nginx
+yum-config-manager --enable rhui-REGION-rhel-server-extras rhui-REGION-rhel-server-optional
+sudo yum install certbot-nginx -y
