@@ -1,6 +1,6 @@
 #!/bin/bash
 
-rm -rf centos7-shell
+rm -rf /root/centos7-shell
 mkdir -p /data/www/
 
 yum update -y

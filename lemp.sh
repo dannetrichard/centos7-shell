@@ -6,6 +6,10 @@ yum install epel-release -y
 yum install nginx -y
 systemctl start nginx
 systemctl enable nginx
+#certbot
+yum -y install yum-utils
+yum-config-manager --enable rhui-REGION-rhel-server-extras rhui-REGION-rhel-server-optional
+sudo yum install certbot-nginx -y
 
 #mysql(mariadb)
 yum install mariadb-server mariadb -y
@@ -56,10 +60,6 @@ sed -i 's/listen.group = nobody/listen.group = nginx/g' /etc/php-fpm.d/www.conf
 sed -i 's/listen = 127.0.0.1:9000/listen = 127.0.0.1:9000/nlisten = \/var\/run\/php-fpm.sock/g' /etc/php-fpm.d/www.conf
 systemctl start php-fpm.service
 systemctl enable php-fpm.service
-
-yum -y install yum-utils
-yum-config-manager --enable rhui-REGION-rhel-server-extras rhui-REGION-rhel-server-optional
-sudo yum install certbot-nginx -y
 
 curl -sS https://getcomposer.org/installer | php
 sudo mv composer.phar /usr/local/bin/composer
